@@ -1,0 +1,81 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.eca.models.Employee;
+import com.capgemini.eca.service.ECAService;
+import com.capgemini.eca.service.ECAServiceImpl;
+
+
+//@FixMethodOrder(MethodSorters.DEFAULT)
+class ECATest{
+	private static ECAService service;
+	
+	
+	@BeforeAll 
+	static void before() {
+		  service = new ECAServiceImpl(); 
+	  }
+	 
+	
+	@Test
+	void myATest() throws ParseException, SQLException {
+		//creating a permanent employee
+		Employee employee = new Employee();
+		employee.setFirstName("Ram");
+		employee.setLastName("Raj");
+		employee.setGrade("A");
+		String date="23-07-2020";
+		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		Date joiningDate = format.parse(date);
+		employee.setJoiningDate(joiningDate);
+		employee.setEmployeeType("Permenant");
+		employee.setContractor("NA");
+		employee.setDesignation("PM");
+		employee.setExperience(2);
+		employee.setSalary(service.getPermenantSalary(employee));
+		int expected = 1;
+		assertEquals(expected, service.createEmployee(employee));
+	}
+	
+	@Test
+	void myBTest() throws IllegalArgumentException, IllegalAccessException, SQLException {
+		String expected = " Employee Id = 1, Employee Name=Ram Raj, Designation=PM, Experience=2.0 yrs.";
+		assertEquals(expected, service.getEmployeeDetails(1, false));
+	}
+	
+	@Test
+	void myETest() throws SQLException {
+		int expectedSize = 1;
+		List<Employee> empList = service.getAllEmployees();
+		assertEquals(expectedSize, empList.size());
+	}
+	
+	@Test
+	void myFTest() throws SQLException {
+		int expectedCount = 1;
+		assertEquals(expectedCount, service.getCount());
+	}
+	
+	@Test
+	void myGTest() {
+		double expected = 1500.0;
+		double ratePerHour = 100;
+		double numberOfHours = 15;
+		assertEquals(expected, service.getContractSalary(ratePerHour, numberOfHours));
+	}
+
+	@Test
+	void myJTest() throws SQLException {
+		String expected = "Medical Claim provided of 240000.0 to Employee with id = 1";
+		assertEquals(expected, service.provideMediClaim(1));
+	}
+}

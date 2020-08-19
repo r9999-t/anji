@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS `test`.`employee_creation_automation`;
+CREATE TABLE  `test`.`employee_creation_automation` (
+  `ID` int(5) NOT NULL AUTO_INCREMENT,
+  `FIRST_NAME` varchar(45) NOT NULL,
+  `LAST_NAME` varchar(45) NOT NULL,
+  `SALARY` double NOT NULL,
+  `JOINING_DATE` date NOT NULL,
+  `EMPLOYEE_TYPE` varchar(45) NOT NULL,
+  `CONTRACTOR` varchar(45) DEFAULT NULL,
+  `DESIGNATION` varchar(45) NOT NULL,
+  `MEDI_CLAIM` varchar(45) NOT NULL,
+  `EXPERIENCE` double DEFAULT NULL,
+  `CERTIFICATIONS` varchar(45) DEFAULT NULL,
+  `GRADE` varchar(45) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;

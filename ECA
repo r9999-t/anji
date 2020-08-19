@@ -13,4 +13,4 @@ CREATE TABLE  `test`.`employee_creation_automation` (
   `CERTIFICATIONS` varchar(45) DEFAULT NULL,
   `GRADE` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ;

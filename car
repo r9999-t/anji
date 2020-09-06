@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `test`.`car`;
+CREATE TABLE  `test`.`car` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `make` varchar(20) DEFAULT NULL,
+  `model` varchar(20) DEFAULT NULL,
+  `model_year` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
